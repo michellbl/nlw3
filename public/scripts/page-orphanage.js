@@ -26,9 +26,25 @@ const icon = L.icon({
 //create and add marker
 L.marker([-27.22233, -49.6455874], { icon }).addTo(map);
 
-
 /* image gallary */
 
 function selectImage(event) {
+  const button = event.currentTarget;
 
+  //remover todas as classes .active
+
+  const buttons = document.querySelectorAll(".images button");
+  buttons.forEach(removeActiveClass);
+
+  function removeActiveClass(button) {
+    button.classList.remove("active");
+  }
+  //selecionar a imagem clicada
+  const image = button.children[0];
+  const imageContainer = document.querySelector(".orphanage-details > img")
+  //atualizar o container de image
+imageContainer.src = image.src
+  //adicionar a classe .active para este botao
+
+  button.classList.add("active");
 }
